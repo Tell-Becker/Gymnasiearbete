@@ -245,7 +245,7 @@ GameObject:
   - component: {fileID: 220840594}
   - component: {fileID: 220840593}
   - component: {fileID: 220840592}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Ground
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -567,7 +567,7 @@ GameObject:
   - component: {fileID: 1046409092}
   - component: {fileID: 1046409094}
   - component: {fileID: 1046409093}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Wall left
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -791,7 +791,7 @@ GameObject:
   - component: {fileID: 1312031163}
   - component: {fileID: 1312031162}
   - component: {fileID: 1312031166}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -925,6 +925,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 8
+  raycastDownDistance: 1
+  whatIsGround:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!1 &1341538803
 GameObject:
   m_ObjectHideFlags: 0
@@ -1120,7 +1124,7 @@ GameObject:
   - component: {fileID: 1511042982}
   - component: {fileID: 1511042984}
   - component: {fileID: 1511042983}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Roof
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -1275,7 +1279,7 @@ GameObject:
   - component: {fileID: 2100259120}
   - component: {fileID: 2100259122}
   - component: {fileID: 2100259121}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Wall right
   m_TagString: Ground
   m_Icon: {fileID: 0}
