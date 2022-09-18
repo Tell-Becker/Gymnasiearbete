@@ -11,7 +11,7 @@ public class PlayerMovement : MonoBehaviour
 
 
     [SerializeField] private float speed;
-    [SerializeField] private float raycastDownDistance = 0.4f;
+    [SerializeField] private float raycastDownDistance = 0.01f;
     [SerializeField] private LayerMask whatIsGround;
     [SerializeField] private Transform rightPoint;
     [SerializeField] private Transform leftPoint;
@@ -28,7 +28,17 @@ public class PlayerMovement : MonoBehaviour
  
         if (Input.GetKey(KeyCode.Space))
         {
-            RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, raycastDownDistance, whatIsGround);
+            RaycastHit2D hit = Physics2D.Raycast(leftPoint.position, Vector2.down, raycastDownDistance, whatIsGround);
+            if (hit.collider != null) 
+            {
+                body.velocity = new Vector2(body.velocity.x, speed);
+            }
+            
+        }
+
+         if (Input.GetKey(KeyCode.Space))
+        {
+            RaycastHit2D hit = Physics2D.Raycast(rightPoint.position, Vector2.down, raycastDownDistance, whatIsGround);
             if (hit.collider != null) 
             {
                 body.velocity = new Vector2(body.velocity.x, speed);
