@@ -13,6 +13,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float speed;
     [SerializeField] private float raycastDownDistance = 0.4f;
     [SerializeField] private LayerMask whatIsGround;
+    [SerializeField] private Transform rightPoint;
+    [SerializeField] private Transform leftPoint;
     private Rigidbody2D body;
  
     private void Awake()
