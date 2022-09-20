@@ -11,10 +11,11 @@ public class PlayerMovement : MonoBehaviour
 
 
     [SerializeField] private float speed;
-    [SerializeField] private float raycastDownDistance = 0.4f;
+    [SerializeField] private float raycastDownDistance = 0.01f;
     [SerializeField] private LayerMask whatIsGround;
     [SerializeField] private Transform rightPoint;
     [SerializeField] private Transform leftPoint;
+    private int jumpsLeft = 2;
     private Rigidbody2D body;
  
     private void Awake()
@@ -25,16 +26,37 @@ public class PlayerMovement : MonoBehaviour
     private void Update()
     {
         body.velocity = new Vector2(Input.GetAxis("Horizontal") * speed, body.velocity.y);
- 
-        if (Input.GetKey(KeyCode.Space))
+
+        RaycastHit2D hitLeft = Physics2D.Raycast(leftPoint.position, Vector2.down, raycastDownDistance, whatIsGround);
+        RaycastHit2D hitRight = Physics2D.Raycast(rightPoint.position, Vector2.down, raycastDownDistance, whatIsGround);
+        if (hitRight.collider != null || hitLeft.collider != null) // ockso om nogra av raycast har traffat marken.
         {
-            RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, raycastDownDistance, whatIsGround);
-            if (hit.collider != null) 
+            if (jumpsLeft > 0 && Input.GetKey(KeyCode.Space)) // kollar om det finns hopp kvar
             {
                 body.velocity = new Vector2(body.velocity.x, speed);
+                jumpsLeft--;
+            }
+
+            // if (hitRight.collider == null && hitLeft.collider == null)
+            // {
+            //     if (jumpsLeft == 1)
+            //     {
+            //         if (Input.GetKey(KeyCode.Space)) // kollar om det finns hopp kvar
+            //         {
+            //             body.velocity = new Vector2(body.velocity.x, speed);
+            //             jumpsLeft--;
+            //         }
+            //     }
+            // }
+
+            else
+            {
+                jumpsLeft = 2;
             }
             
+            
         }
+
             
     }
 }
