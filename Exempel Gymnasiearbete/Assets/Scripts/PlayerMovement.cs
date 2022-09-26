@@ -4,18 +4,12 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 { 
 
-    void start()
-    {
-        
-    }
-
-
     [SerializeField] private float speed;
-    [SerializeField] private float raycastDownDistance = 0.01f;
+    [SerializeField] private float jumpheight;
+    [SerializeField] private float raycastDownDistance;
     [SerializeField] private LayerMask whatIsGround;
-    [SerializeField] private Transform rightPoint;
-    [SerializeField] private Transform leftPoint;
-    private int jumpsLeft = 2;
+    [SerializeField] private Transform bottomPoint;
+    private int jumpsLeft;
     private Rigidbody2D body;
  
     private void Awake()
@@ -27,36 +21,14 @@ public class PlayerMovement : MonoBehaviour
     {
         body.velocity = new Vector2(Input.GetAxis("Horizontal") * speed, body.velocity.y);
 
-        RaycastHit2D hitLeft = Physics2D.Raycast(leftPoint.position, Vector2.down, raycastDownDistance, whatIsGround);
-        RaycastHit2D hitRight = Physics2D.Raycast(rightPoint.position, Vector2.down, raycastDownDistance, whatIsGround);
-        if (hitRight.collider != null || hitLeft.collider != null) // ockso om nogra av raycast har traffat marken.
+        if (jumpsLeft > 0 && Input.GetKeyDown(KeyCode.Space)) // kollar om det finns hopp kvar
         {
-            if (jumpsLeft > 0 && Input.GetKey(KeyCode.Space)) // kollar om det finns hopp kvar
-            {
-                body.velocity = new Vector2(body.velocity.x, speed);
-                jumpsLeft--;
-            }
-
-            // if (hitRight.collider == null && hitLeft.collider == null)
-            // {
-            //     if (jumpsLeft == 1)
-            //     {
-            //         if (Input.GetKey(KeyCode.Space)) // kollar om det finns hopp kvar
-            //         {
-            //             body.velocity = new Vector2(body.velocity.x, speed);
-            //             jumpsLeft--;
-            //         }
-            //     }
-            // }
-
-            else
-            {
-                jumpsLeft = 2;
-            }
-            
-            
+            body.velocity = new Vector2(body.velocity.x, jumpheight);
+            jumpsLeft--;
         }
+        Debug.Log(jumpsLeft);
 
-            
     }
+
+    public void ResetJumpsLeft() => jumpsLeft = 2;
 }
