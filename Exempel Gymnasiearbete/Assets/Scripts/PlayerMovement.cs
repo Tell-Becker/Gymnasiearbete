@@ -19,7 +19,10 @@ public class PlayerMovement : MonoBehaviour
  
     private void Update()
     {
-        body.velocity = new Vector2(Input.GetAxis("Horizontal") * speed, body.velocity.y);
+        while (Input.GetMouseButtonDown(0) == false)
+        {
+            body.velocity = new Vector2(Input.GetAxis("Horizontal") * speed, body.velocity.y);
+        }
 
         if (jumpsLeft > 0 && Input.GetKeyDown(KeyCode.Space)) // kollar om det finns hopp kvar
         {

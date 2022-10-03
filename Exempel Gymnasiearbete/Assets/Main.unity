@@ -3703,7 +3703,7 @@ GameObject:
   - component: {fileID: 1312031166}
   - component: {fileID: 1312031169}
   - component: {fileID: 1312031168}
-  - component: {fileID: 1312031167}
+  - component: {fileID: 1312031170}
   m_Layer: 7
   m_Name: Player
   m_TagString: Player
@@ -3723,7 +3723,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 10
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 2
@@ -3845,21 +3845,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   bottomPoint: {fileID: 593702773}
---- !u!114 &1312031167
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1312031161}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4b9ec9f3058e684bbefd9ea41c46b51, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mainCamera: {fileID: 519420031}
-  lineRenderer: {fileID: 1312031168}
-  distanceJoint: {fileID: 1312031169}
 --- !u!120 &1312031168
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -3911,8 +3896,8 @@ LineRenderer:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
-        time: 0
-        value: 1
+        time: 0.025697503
+        value: 0.068965554
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -3978,6 +3963,18 @@ DistanceJoint2D:
   m_AutoConfigureDistance: 1
   m_Distance: 0.005
   m_MaxDistanceOnly: 0
+--- !u!114 &1312031170
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1312031161}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4b9ec9f3058e684bbefd9ea41c46b51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1328922748
 GameObject:
   m_ObjectHideFlags: 0
