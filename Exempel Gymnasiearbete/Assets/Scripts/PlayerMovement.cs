@@ -26,8 +26,6 @@ public class PlayerMovement : MonoBehaviour
             body.velocity = new Vector2(body.velocity.x, jumpheight);
             jumpsLeft--;
         }
-        Debug.Log(jumpsLeft);
-
     }
 
     public void ResetJumpsLeft() => jumpsLeft = 2;
