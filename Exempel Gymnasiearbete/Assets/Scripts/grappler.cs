@@ -8,17 +8,18 @@ public class grappler : MonoBehaviour
     public Camera mainCamera;
     public LineRenderer lineRenderer;
     public DistanceJoint2D distanceJoint;
-    public LayerMask grappleMask;
+    public LayerMask grappleMask; // Se om jag kan göra att den bara grapplar på ett visst layer
+    public bool isGrapplerActive;
 
     void Start()
     {
         distanceJoint.enabled = false;
+        isGrapplerActive = false; 
     }
 
     void Update()
     {
-        //RaycastHit2D hit2D = Physics2D.Raycast(mainCamera.transform.position, mousePos, Mathf.Infinity, grappleMask);
-        if (Input.GetKeyDown(KeyCode.Mouse0)) //&& hit2D ?
+        if (Input.GetKeyDown(KeyCode.Mouse0)) 
         {
             Vector2 mousePos = (Vector2)mainCamera.ScreenToWorldPoint(Input.mousePosition);
             lineRenderer.SetPosition(0, mousePos);
@@ -26,6 +27,7 @@ public class grappler : MonoBehaviour
             distanceJoint.connectedAnchor = mousePos;
             distanceJoint.enabled = true;
             lineRenderer.enabled = true;
+            isGrapplerActive = true; 
         }
         else if(Input.GetKeyUp(KeyCode.Mouse0))
         {

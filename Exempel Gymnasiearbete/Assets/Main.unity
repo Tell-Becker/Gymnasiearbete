@@ -4089,6 +4089,10 @@ MonoBehaviour:
   mainCamera: {fileID: 519420031}
   lineRenderer: {fileID: 1312031168}
   distanceJoint: {fileID: 1312031169}
+  grappleMask:
+    serializedVersion: 2
+    m_Bits: 256
+  isGrapplerActive: 0
 --- !u!1 &1328922748
 GameObject:
   m_ObjectHideFlags: 0
