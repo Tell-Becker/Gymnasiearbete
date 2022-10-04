@@ -5,7 +5,7 @@ using UnityEngine;
 public class GroundCheck : MonoBehaviour
 
 {
-    [SerializeField] private LayerMask layer;
+    public LayerMask layer;
     [SerializeField] private PlayerMovement movement;
 
     private void OnTriggerEnter2D(Collider2D otherCollider)

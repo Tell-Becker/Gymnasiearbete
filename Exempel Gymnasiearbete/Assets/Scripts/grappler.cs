@@ -33,6 +33,7 @@ public class grappler : MonoBehaviour
         {
             distanceJoint.enabled = false;
             lineRenderer.enabled = false;
+            isGrapplerActive = false; 
         }
         if (distanceJoint.enabled)
         {
