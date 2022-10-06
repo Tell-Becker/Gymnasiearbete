@@ -13,6 +13,11 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody2D body;
     public grappler grapplerScript;
     public GroundCheck groundChecker;
+    
+    private bool hasGrappled = false;
+    private float grappleReleaseSpeed;
+    [SerializeField] float maximumGrapplingSpeed;
+
     private void Awake()
     {
         body = GetComponent<Rigidbody2D>();
@@ -22,10 +27,21 @@ public class PlayerMovement : MonoBehaviour
     private void Update()
    {
 
-        if (grapplerScript.isGrapplerActive == false) // fungerar men du har inget momentum
+        if (grapplerScript.isGrapplerActive == true && !hasGrappled)
+        {            
+            hasGrappled = true;
+        }
+        
+
+        if (hasGrappled == false) // fungerar men du har inget momentum
         {
             body.velocity = new Vector2(Input.GetAxis("Horizontal") * speed, body.velocity.y);
         }
+        else if (grapplerScript.isGrapplerActive == false && hasGrappled)
+        {
+            body.velocity = new Vector2(Mathf.Clamp((Input.GetAxis("Horizontal") * speed + grappleReleaseSpeed), -(maximumGrapplingSpeed + grappleReleaseSpeed), maximumGrapplingSpeed + grappleReleaseSpeed), body.velocity.y);
+        }
+
 
         // if (grapplerScript.isGrapplerActive == true && Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))
         // {
@@ -41,5 +57,12 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    public void ResetJumpsLeft() => jumpsLeft = 2;
+    public void ResetJumpsLeft() 
+    {
+        hasGrappled = false;
+        jumpsLeft = 2;
+    } 
+
+    public void ReleasedGrapple() => grappleReleaseSpeed = body.velocity.x;
+
 }
