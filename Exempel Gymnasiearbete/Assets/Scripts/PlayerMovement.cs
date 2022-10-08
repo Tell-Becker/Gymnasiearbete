@@ -44,6 +44,7 @@ public class PlayerMovement : MonoBehaviour
         {
 
             //hej hoppas detta fungerar
+            //Test igen
             
             //body.velocity = new Vector2(Input.GetAxis("Horizontal") * speed + grappleReleaseSpeed, body.velocity.y);
 
