@@ -42,6 +42,8 @@ public class PlayerMovement : MonoBehaviour
 
         else if (grapplerScript.isGrapplerActive == false && hasGrappled && grappleReleaseSpeed != 0)
         {
+
+            //hej hoppas detta fungerar
             
             //body.velocity = new Vector2(Input.GetAxis("Horizontal") * speed + grappleReleaseSpeed, body.velocity.y);
 
