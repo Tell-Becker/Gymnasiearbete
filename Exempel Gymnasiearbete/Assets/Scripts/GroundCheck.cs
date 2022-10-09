@@ -10,7 +10,7 @@ public class GroundCheck : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D otherCollider)
     {
-        Debug.Log(otherCollider.gameObject.layer);
+        //Debug.Log(otherCollider.gameObject.layer);
 
         if (otherCollider.gameObject.layer == 6)
         {

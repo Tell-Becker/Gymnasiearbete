@@ -1,17 +1,25 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ObstacleKillColider : MonoBehaviour
 {
 
-    void OnCollisionEnter2D(Collision2D playerCollider)
+    //public int Respawn;
+    //public static event Action OnPlayerDeath;
+
+    void OnTriggerEnter2D(Collider2D playerCollider)
     {
-        if (playerCollider.gameObject.tag == "Player")
+        if (playerCollider.CompareTag("Player"))
         {
-            // Destroy playerCollider
-            playerCollider.gameObject.transform.position = new Vector2(0,0);
-            // Destroy(playerCollider.gameObject);
+
+
+            Debug.Log("You're dead");
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            //SceneManager.LoadScene(Respawn);
+            //playerCollider.gameObject.transform.position = new Vector2(0,0);
         }
     }
 
