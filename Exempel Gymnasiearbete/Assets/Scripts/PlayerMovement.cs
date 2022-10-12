@@ -19,11 +19,29 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float maximumGrapplingSpeed;
     [SerializeField] float grapplingSpeedRetardation = 0.01f;
 
+    Animator animator;
+
+    private void OnEnable()
+    {
+        ObstacleKillCollider.OnPlayerDeath += DisablePlayerMovement;
+    }
+
+    private void OnDisable()
+    {
+        ObstacleKillCollider.OnPlayerDeath -= DisablePlayerMovement;
+    } 
+
+
     private void Awake()
     {
         body = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>(); 
     }
 
+    private void start()
+    {
+        EnablePlayerMovement();
+    }
 
     private void Update()
    {
@@ -134,5 +152,17 @@ public class PlayerMovement : MonoBehaviour
     } 
 
     public void ReleasedGrapple() => grappleReleaseSpeed = body.velocity.x;
+
+    private void DisablePlayerMovement()
+    {
+        animator.enabled = false;
+        body.bodyType = RigidbodyType2D.Static;
+    }
+
+        private void EnablePlayerMovement()
+    {
+        animator.enabled = true;
+        body.bodyType = RigidbodyType2D.Dynamic;
+    }
 
 }

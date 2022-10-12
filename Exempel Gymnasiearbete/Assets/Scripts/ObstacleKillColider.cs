@@ -8,7 +8,7 @@ public class ObstacleKillColider : MonoBehaviour
 {
 
     //public int Respawn;
-    //public static event Action OnPlayerDeath;
+    public static event Action OnPlayerDeath;
 
     void OnTriggerEnter2D(Collider2D playerCollider)
     {
@@ -17,7 +17,10 @@ public class ObstacleKillColider : MonoBehaviour
 
 
             Debug.Log("You're dead");
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            OnPlayerDeath?.Invoke();
+            
+            
+            //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
             //SceneManager.LoadScene(Respawn);
             //playerCollider.gameObject.transform.position = new Vector2(0,0);
         }
