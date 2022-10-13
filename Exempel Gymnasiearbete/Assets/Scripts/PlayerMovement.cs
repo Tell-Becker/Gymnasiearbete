@@ -17,7 +17,7 @@ public class PlayerMovement : MonoBehaviour
     private bool hasGrappled = false;
     private float grappleReleaseSpeed;
     [SerializeField] float maximumGrapplingSpeed;
-    [SerializeField] float grapplingSpeedRetardation = 0.01f;
+    [SerializeField] float grapplingSpeedRetardation = 0.00001f;
 
     Animator animator;
 
@@ -56,84 +56,96 @@ public class PlayerMovement : MonoBehaviour
         {
             body.velocity = new Vector2(Input.GetAxis("Horizontal") * speed, body.velocity.y);
         }
-        
 
         else if (grapplerScript.isGrapplerActive == false && hasGrappled && grappleReleaseSpeed != 0)
         {
 
-            //hej hoppas detta fungerar
-            //Test igen
-            
-            //body.velocity = new Vector2(Input.GetAxis("Horizontal") * speed + grappleReleaseSpeed, body.velocity.y);
+            // if grapplereleasespeed > 0
+                // förändring i grapplerelasespeed får inte bli < 0 
+            Debug.Log(grappleReleaseSpeed);
 
-            //body.velocity = new Vector2(Mathf.Clamp((Input.GetAxis("Horizontal") * speed + grappleReleaseSpeed), -(speed - grappleReleaseSpeed), speed + grappleReleaseSpeed), body.velocity.y);
-
-            //Farsaker gara att hastigheten + releasedgrapplespeed aldrig averstiger 8
-
+        
             if (grappleReleaseSpeed >= 8)
             {
                 grappleReleaseSpeed = 8;
+                grappleReleaseSpeed -= grapplingSpeedRetardation;
+
+                
                 if (Input.GetKey(KeyCode.A)) 
                 {
-                    // grappleReleaseSpeed -= grapplingSpeedRetardation;
                     speed = 8;
                     body.velocity = new Vector2(Input.GetAxis("Horizontal") * speed + grappleReleaseSpeed, body.velocity.y);
+
                 }
                 if (Input.GetKey(KeyCode.D))
                 {
-                    // grappleReleaseSpeed -= grapplingSpeedRetardation;
                     speed = 0;
                     body.velocity = new Vector2(Input.GetAxis("Horizontal") * speed + grappleReleaseSpeed, body.velocity.y);
                 }
             }
+
+
+
             else if (grappleReleaseSpeed <= -8)
             {
                 grappleReleaseSpeed = -8;
+                grappleReleaseSpeed += grapplingSpeedRetardation;
+
                 if (Input.GetKey(KeyCode.A)) 
                 {
-                    // grappleReleaseSpeed += grapplingSpeedRetardation;
                     speed = 0;
                     body.velocity = new Vector2(Input.GetAxis("Horizontal") * speed + grappleReleaseSpeed, body.velocity.y);
                 }
                 if (Input.GetKey(KeyCode.D))
                 {
-                    // grappleReleaseSpeed += grapplingSpeedRetardation;
                     speed = 8;
                     body.velocity = new Vector2(Input.GetAxis("Horizontal") * speed + grappleReleaseSpeed, body.velocity.y);
                 }
             }
-            else if (grappleReleaseSpeed < 8 && grappleReleaseSpeed >= 0 )
+
+
+
+            else if (grappleReleaseSpeed < 8 && grappleReleaseSpeed > 0 )
             {
+                grappleReleaseSpeed -= grapplingSpeedRetardation;
+
                 if (Input.GetKey(KeyCode.A)) 
                 {
-                    // grappleReleaseSpeed -= grapplingSpeedRetardation;
                     speed = 8;
                     body.velocity = new Vector2(Input.GetAxis("Horizontal") * speed + grappleReleaseSpeed, body.velocity.y);
                 }
                 if (Input.GetKey(KeyCode.D))
                 {
-                    // grappleReleaseSpeed -= grapplingSpeedRetardation;
                     speed = 8 - grappleReleaseSpeed;
                     body.velocity = new Vector2(Input.GetAxis("Horizontal") * speed + grappleReleaseSpeed, body.velocity.y);
                 }
             }
-            else if (grappleReleaseSpeed > -8 && grappleReleaseSpeed <= 0)
+
+
+
+            else if (grappleReleaseSpeed > -8 && grappleReleaseSpeed < 0)
             {
+                grappleReleaseSpeed += grapplingSpeedRetardation;
+
                 if (Input.GetKey(KeyCode.A))
                 {
-                    //grappleReleaseSpeed += grapplingSpeedRetardation;
                     //grappleReleaseSpeed = grappleReleaseSpeed * -1;
-                    speed = 8 - grappleReleaseSpeed;
+                    speed = 8 + grappleReleaseSpeed;
                     grappleReleaseSpeed = grappleReleaseSpeed - speed;    
                     body.velocity = new Vector2(Input.GetAxis("Horizontal") * speed + grappleReleaseSpeed, body.velocity.y);
                 }
                 if (Input.GetKey(KeyCode.D))
                 {
-                    //grappleReleaseSpeed += grapplingSpeedRetardation;
                     speed = 8;
                     body.velocity = new Vector2(Input.GetAxis("Horizontal") * speed + grappleReleaseSpeed, body.velocity.y);
                 }
-                
+            }
+
+
+
+            else if (grappleReleaseSpeed == 0)
+            {
+                body.velocity = new Vector2(Input.GetAxis("Horizontal") * speed, body.velocity.y);
             }        
         }
 
