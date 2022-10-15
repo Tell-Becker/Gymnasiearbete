@@ -60,7 +60,7 @@ public class PlayerMovement : MonoBehaviour
         else if (grapplerScript.isGrapplerActive == false && hasGrappled && grappleReleaseSpeed != 0)
         {
 
-            Debug.Log(grappleReleaseSpeed);
+            //Debug.Log(grappleReleaseSpeed);
 
         
             if (grappleReleaseSpeed > 8)
@@ -78,7 +78,7 @@ public class PlayerMovement : MonoBehaviour
                 if (grappleReleaseSpeed > 0.02f)
                 {
                     grappleReleaseSpeed -= grapplingSpeedRetardation;
-                    grappleReleaseSpeed += 0.08f;
+                    grappleReleaseSpeed += 0.085f;
                 }
 
                 if (Input.GetKey(KeyCode.A)) 
@@ -98,7 +98,7 @@ public class PlayerMovement : MonoBehaviour
                 if (grappleReleaseSpeed < -0.02f)
                 {
                     grappleReleaseSpeed += grapplingSpeedRetardation;
-                    grappleReleaseSpeed -= 0.08f;
+                    grappleReleaseSpeed -= 0.085f;
                 }
                 if (Input.GetKey(KeyCode.A))
                 {
@@ -130,7 +130,7 @@ public class PlayerMovement : MonoBehaviour
     public void ResetJumpsLeft() 
     {
         hasGrappled = false;
-        jumpsLeft = 2;
+        jumpsLeft = 1;
     } 
 
     public void ReleasedGrapple() => grappleReleaseSpeed = body.velocity.x;
