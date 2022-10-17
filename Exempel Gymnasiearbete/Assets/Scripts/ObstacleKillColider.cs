@@ -16,7 +16,7 @@ public class ObstacleKillColider : MonoBehaviour
         {
 
 
-            Debug.Log("You're dead");
+            //Debug.Log("You're dead");
             OnPlayerDeath?.Invoke();
             
             

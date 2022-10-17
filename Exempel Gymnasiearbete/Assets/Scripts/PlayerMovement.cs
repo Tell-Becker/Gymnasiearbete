@@ -119,7 +119,6 @@ public class PlayerMovement : MonoBehaviour
             }        
         }
 
-
         if (jumpsLeft > 0 && Input.GetKeyDown(KeyCode.Space)) // kollar om det finns hopp kvar
         {
             body.velocity = new Vector2(body.velocity.x, jumpheight);
@@ -131,7 +130,15 @@ public class PlayerMovement : MonoBehaviour
     {
         hasGrappled = false;
         jumpsLeft = 1;
+        Debug.Log(jumpsLeft);
     } 
+
+    public void NotOnGround()
+    {
+        hasGrappled = false;
+        jumpsLeft = 0;
+        Debug.Log(jumpsLeft);
+    }
 
     public void ReleasedGrapple() => grappleReleaseSpeed = body.velocity.x;
 

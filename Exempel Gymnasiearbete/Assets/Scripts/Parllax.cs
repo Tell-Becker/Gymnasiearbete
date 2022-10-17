@@ -23,14 +23,14 @@ public class Parllax : MonoBehaviour {
         float dist = (cam.transform.position.x * parallaxEffect);
 
         transform.position = new Vector3(startpos + dist, transform.position.y, transform.position.z);
-        Debug.Log(length);
-        Debug.Log(temp);
+        //Debug.Log(length);
+        //Debug.Log(temp);
 
-        if (temp > startpos + (length - 3))
+        if (temp > startpos + (length - 5))
         {
             startpos += length;
         }
-        else if (temp < startpos - (length - 3))
+        else if (temp < startpos - (length - 5))
         {
             startpos -= length;
         }
