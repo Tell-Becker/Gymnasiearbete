@@ -135,7 +135,6 @@ public class PlayerMovement : MonoBehaviour
 
     public void NotOnGround()
     {
-        hasGrappled = false;
         jumpsLeft = 0;
         Debug.Log(jumpsLeft);
     }
