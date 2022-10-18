@@ -17,20 +17,14 @@ public class GroundCheck : MonoBehaviour
         {
             movement.ResetJumpsLeft();        
         }
-        else 
-        {
-            //OnGround = false;
-        }
 
-    
-        // kolla om den andra collidern är ground. 
-        // I så fall tillkalla resetjumpsleft() i player.
     }
-    // private void Update()
-    // {
-    //     if (OnGround == false);
-    //     {
-    //         movement.NotOnGround();
-    //     }
-    // }
+
+    private void OnTriggerExit2D(Collider2D otherCollider)
+    {
+        if (otherCollider.gameObject.layer == 6)
+        {
+            movement.NotOnGround();
+        }
+    }
 }

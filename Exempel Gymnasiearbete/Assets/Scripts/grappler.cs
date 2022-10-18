@@ -11,11 +11,12 @@ public class grappler : MonoBehaviour
     public LayerMask grapplelayer; // Se om jag kan göra att den bara grapplar på ett visst layer
     public bool isGrapplerActive;
     [SerializeField] PlayerMovement movement;
-    [SerializeField] OnGrapplingObject onGrapplingObjectScript;
+    [SerializeField] OnGrapplingObject[] onGrapplingObjectScripts;
     
 
     void Start()
     {
+        onGrapplingObjectScripts = FindObjectsOfType<OnGrapplingObject>();
         distanceJoint.enabled = false;
         isGrapplerActive = false; 
     }
@@ -32,15 +33,23 @@ public class grappler : MonoBehaviour
         }
 
         
-        if (Input.GetKeyDown(KeyCode.Mouse0) && onGrapplingObjectScript.MouseOnGrappleLayer) // && mouseposition == layer = 6 
+        if (Input.GetKeyDown(KeyCode.Mouse0)) // && mouseposition == layer = 6 
         {
-            Vector2 mousePos = (Vector2)mainCamera.ScreenToWorldPoint(Input.mousePosition);
-            lineRenderer.SetPosition(0, mousePos);
-            lineRenderer.SetPosition(1, transform.position);
-            distanceJoint.connectedAnchor = mousePos;
-            distanceJoint.enabled = true;
-            lineRenderer.enabled = true;
-            isGrapplerActive = true; 
+            foreach (OnGrapplingObject grapplingPoint in onGrapplingObjectScripts)
+            {
+                if (grapplingPoint.MouseOnGrappleLayer)
+                {
+                    Vector2 mousePos = (Vector2)mainCamera.ScreenToWorldPoint(Input.mousePosition);
+                    lineRenderer.SetPosition(0, mousePos);
+                    lineRenderer.SetPosition(1, transform.position);
+                    distanceJoint.connectedAnchor = mousePos;
+                    distanceJoint.enabled = true;
+                    lineRenderer.enabled = true;
+                    isGrapplerActive = true;
+                }
+            }
+
+            
         }
         else if(Input.GetKeyUp(KeyCode.Mouse0))
         {
