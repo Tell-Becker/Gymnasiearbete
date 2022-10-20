@@ -78,7 +78,7 @@ public class PlayerMovement : MonoBehaviour
                 if (grappleReleaseSpeed > 0.02f)
                 {
                     grappleReleaseSpeed -= grapplingSpeedRetardation;
-                    grappleReleaseSpeed += 0.085f;
+                    grappleReleaseSpeed += 0.05f;
                 }
 
                 if (Input.GetKey(KeyCode.A)) 
@@ -98,7 +98,7 @@ public class PlayerMovement : MonoBehaviour
                 if (grappleReleaseSpeed < -0.02f)
                 {
                     grappleReleaseSpeed += grapplingSpeedRetardation;
-                    grappleReleaseSpeed -= 0.085f;
+                    grappleReleaseSpeed -= 0.05f;
                 }
                 if (Input.GetKey(KeyCode.A))
                 {
