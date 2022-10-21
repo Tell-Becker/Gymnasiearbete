@@ -5,23 +5,28 @@ using UnityEngine;
 public class RandomObstacle : MonoBehaviour
 {
 
+    [SerializeField] private Transform Obstacle_Start;
     [SerializeField] private Transform Obstacle1;
 
-    void Start()
-    {
-    }
-
-    
     private void Awake()
     {
-        SpawnLevelPart(new Vector3(-2, 0));
-        SpawnLevelPart(new Vector3(-2, 0) + new Vector3(15, 0));
-        SpawnLevelPart(new Vector3(-2, 0) + new Vector3(15, 0) + new Vector3(15,0));
+        Transform ObstaclePartTransform;
+        ObstaclePartTransform = SpawnLevelPart(Obstacle_Start.Find("EndPosition").position);
+        ObstaclePartTransform = SpawnLevelPart(ObstaclePartTransform.Find("EndPosition").position);
+        ObstaclePartTransform = SpawnLevelPart(ObstaclePartTransform.Find("EndPosition").position);
+        ObstaclePartTransform = SpawnLevelPart(ObstaclePartTransform.Find("EndPosition").position);
+        ObstaclePartTransform = SpawnLevelPart(ObstaclePartTransform.Find("EndPosition").position);
+        ObstaclePartTransform = SpawnLevelPart(ObstaclePartTransform.Find("EndPosition").position);
+
+
+        // SpawnLevelPart(new Vector3(-2, 0) + new Vector3(15, 0));
+        // SpawnLevelPart(new Vector3(-2, 0) + new Vector3(15, 0) + new Vector3(15,0));
         // Instantiate(Obstacle1, new Vector3(-2, 0), Quaternion.identity, gameObject.transform);
     }
 
-    private void SpawnLevelPart(Vector3 spawnPosition) {
-        Instantiate(Obstacle1, spawnPosition, Quaternion.identity, gameObject.transform);
+    private Transform SpawnLevelPart(Vector3 spawnPosition) {
+        Transform ObstaclePartTransform  = Instantiate(Obstacle1, spawnPosition, Quaternion.identity, gameObject.transform);
+        return ObstaclePartTransform;
     }
     
     // private void Start () 
@@ -38,3 +43,4 @@ public class RandomObstacle : MonoBehaviour
     // }
 
 }
+

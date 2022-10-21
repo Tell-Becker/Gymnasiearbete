@@ -642,7 +642,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfdf918092f5afc40b634cf46b8acd5e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Obstacle1: {fileID: 7689011849452073452, guid: 74220400f5d9cda4dbd04a9d9f7933f3, type: 3}
+  Obstacle_Start: {fileID: 1367950240}
+  Obstacle1: {fileID: 1546055868475481685, guid: 8425072b6eb2cb24ab133581ad93e9eb, type: 3}
 --- !u!1 &484760020
 GameObject:
   m_ObjectHideFlags: 0
@@ -666,13 +667,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 484760020}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6, y: -1, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 6, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1863478499}
-  m_RootOrder: 5
+  m_Father: {fileID: 1367950240}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &495891164
 GameObject:
@@ -1327,7 +1328,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.6, y: 0.5}
+  m_Size: {x: 1.6, y: 0.7}
   m_EdgeRadius: 0
 --- !u!114 &593702775
 MonoBehaviour:
@@ -4322,6 +4323,7 @@ Transform:
   - {fileID: 677871525}
   - {fileID: 557760271}
   - {fileID: 400615783}
+  - {fileID: 484760021}
   m_Father: {fileID: 1863478499}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5457,7 +5459,6 @@ Transform:
   - {fileID: 495891165}
   - {fileID: 469194809}
   - {fileID: 1367950240}
-  - {fileID: 484760021}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -6103,6 +6104,10 @@ PrefabInstance:
     - target: {fileID: 2943782549619701168, guid: d86f87d00a590dd45b8b0f2cb87d0369, type: 3}
       propertyPath: m_Name
       value: Startplatform
+      objectReference: {fileID: 0}
+    - target: {fileID: 2943782549619701168, guid: d86f87d00a590dd45b8b0f2cb87d0369, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5811952510668108194, guid: d86f87d00a590dd45b8b0f2cb87d0369, type: 3}
       propertyPath: m_RootOrder
