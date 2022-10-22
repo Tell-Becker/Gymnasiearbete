@@ -4,27 +4,42 @@ using UnityEngine;
 
 public class RandomObstacle : MonoBehaviour
 {
+    private const float PLAYER_DISTANCE_SPAWN_LEVEL_PART = 100f;
 
     [SerializeField] private Transform Obstacle_Start;
     [SerializeField] private Transform Obstacle1;
+    [SerializeField] private GameObject player;
+
+    private Vector3 lastEndPosition;
 
     private void Awake()
     {
-        Transform ObstaclePartTransform;
-        ObstaclePartTransform = SpawnLevelPart(Obstacle_Start.Find("EndPosition").position);
-        ObstaclePartTransform = SpawnLevelPart(ObstaclePartTransform.Find("EndPosition").position);
-        ObstaclePartTransform = SpawnLevelPart(ObstaclePartTransform.Find("EndPosition").position);
-        ObstaclePartTransform = SpawnLevelPart(ObstaclePartTransform.Find("EndPosition").position);
-        ObstaclePartTransform = SpawnLevelPart(ObstaclePartTransform.Find("EndPosition").position);
-        ObstaclePartTransform = SpawnLevelPart(ObstaclePartTransform.Find("EndPosition").position);
-
-
-        // SpawnLevelPart(new Vector3(-2, 0) + new Vector3(15, 0));
-        // SpawnLevelPart(new Vector3(-2, 0) + new Vector3(15, 0) + new Vector3(15,0));
-        // Instantiate(Obstacle1, new Vector3(-2, 0), Quaternion.identity, gameObject.transform);
+        lastEndPosition = Obstacle_Start.Find("EndPosition").position;
+        int startingSpawnLevelParts = 5;
+        for (int i = 0; i < startingSpawnLevelParts; i++)
+        {
+            SpawnLevelPart();
+        }
     }
 
-    private Transform SpawnLevelPart(Vector3 spawnPosition) {
+    private void Update() 
+    {
+        if (Vector3.Distance(player.transform.position, lastEndPosition) < PLAYER_DISTANCE_SPAWN_LEVEL_PART)
+        {
+            // Spawn another level part 
+            SpawnLevelPart();
+        }
+    }
+
+    private void SpawnLevelPart()
+    {
+        Transform lastLevelPartTransform = SpawnLevelPart(lastEndPosition);
+        lastEndPosition = lastLevelPartTransform.Find("EndPosition").position;
+
+    }
+
+    private Transform SpawnLevelPart(Vector3 spawnPosition) 
+    {
         Transform ObstaclePartTransform  = Instantiate(Obstacle1, spawnPosition, Quaternion.identity, gameObject.transform);
         return ObstaclePartTransform;
     }
