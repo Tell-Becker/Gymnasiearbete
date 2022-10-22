@@ -643,7 +643,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Obstacle_Start: {fileID: 1367950240}
-  Obstacle1: {fileID: 1546055868475481685, guid: 8425072b6eb2cb24ab133581ad93e9eb, type: 3}
+  ObstacleList:
+  - {fileID: 1546055868475481685, guid: c09e52f53eef8cb429fdddc0ad7043bd, type: 3}
+  - {fileID: 3099467181632895456, guid: 9dfa44bc96c07644a87fa355ac768dbb, type: 3}
+  - {fileID: 6909027118881182637, guid: 99650942873168e4a95454199a21f190, type: 3}
   player: {fileID: 1312031161}
 --- !u!1 &484760020
 GameObject:

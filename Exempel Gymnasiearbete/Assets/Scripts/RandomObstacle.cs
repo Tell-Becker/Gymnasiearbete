@@ -7,7 +7,7 @@ public class RandomObstacle : MonoBehaviour
     private const float PLAYER_DISTANCE_SPAWN_LEVEL_PART = 100f;
 
     [SerializeField] private Transform Obstacle_Start;
-    [SerializeField] private Transform Obstacle1;
+    [SerializeField] public List<Transform> ObstacleList;
     [SerializeField] private GameObject player;
 
     private Vector3 lastEndPosition;
@@ -33,14 +33,15 @@ public class RandomObstacle : MonoBehaviour
 
     private void SpawnLevelPart()
     {
-        Transform lastLevelPartTransform = SpawnLevelPart(lastEndPosition);
+        Transform chosenObstacle = ObstacleList[Random.Range(0, ObstacleList.Count)];
+        Transform lastLevelPartTransform = SpawnLevelPart(chosenObstacle, lastEndPosition);
         lastEndPosition = lastLevelPartTransform.Find("EndPosition").position;
 
     }
 
-    private Transform SpawnLevelPart(Vector3 spawnPosition) 
+    private Transform SpawnLevelPart(Transform obstacle, Vector3 spawnPosition) 
     {
-        Transform ObstaclePartTransform  = Instantiate(Obstacle1, spawnPosition, Quaternion.identity, gameObject.transform);
+        Transform ObstaclePartTransform  = Instantiate(obstacle, spawnPosition, Quaternion.identity, gameObject.transform);
         return ObstaclePartTransform;
     }
     

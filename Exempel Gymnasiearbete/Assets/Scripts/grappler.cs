@@ -16,13 +16,14 @@ public class grappler : MonoBehaviour
 
     void Start()
     {
-        onGrapplingObjectScripts = FindObjectsOfType<OnGrapplingObject>();
-        distanceJoint.enabled = false;
-        isGrapplerActive = false; 
+        //onGrapplingObjectScripts = FindObjectsOfType<OnGrapplingObject>();
+        // distanceJoint.enabled = false;
+        // isGrapplerActive = false; 
     }
 
     void Update()
     {
+        onGrapplingObjectScripts = FindObjectsOfType<OnGrapplingObject>();
 
         
         RaycastHit hit;
