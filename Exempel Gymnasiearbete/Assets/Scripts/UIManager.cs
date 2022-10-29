@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class UIManager : MonoBehaviour
 {
     public GameObject gameOverMenu;
+    public GameObject scoreCounter;
 
     private void OnEnable()
     {
@@ -20,6 +21,7 @@ public class UIManager : MonoBehaviour
     public void EnableGameOverMenu()
     {
         gameOverMenu.SetActive(true);
+        scoreCounter.SetActive(false);
     }
 
     public void RestartLevel()

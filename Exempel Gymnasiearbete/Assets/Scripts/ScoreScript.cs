@@ -10,10 +10,11 @@ public class ScoreScript : MonoBehaviour
     public Transform player;
     public TextMeshProUGUI scoreText;
     public float newScore;
-    // Update is called once per frame
+ 
     void Update()
     {
 
+    
         if (player.position.x < 0 && newScore < 0) 
         {
             scoreText.text = "0";
@@ -24,6 +25,8 @@ public class ScoreScript : MonoBehaviour
             scoreText.text = player.position.x.ToString("0");
             newScore = player.position.x;
         }
-
     }
+            
+
+
 }
