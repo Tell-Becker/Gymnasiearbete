@@ -45,9 +45,12 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: Player
+  - name: Line
     uniqueID: 426525051
     locked: 0
-  - name: Line
+  - name: Player
     uniqueID: 1664765231
+    locked: 0
+  - name: Grappling
+    uniqueID: 2448659797
     locked: 0
