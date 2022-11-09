@@ -13,6 +13,7 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody2D body;
     public grappler grapplerScript;
     public GroundCheck groundChecker;
+    public JumpBoost JumpBoost;
     
     private bool hasGrappled = false;
     private float grappleReleaseSpeed;
@@ -124,6 +125,16 @@ public class PlayerMovement : MonoBehaviour
             body.velocity = new Vector2(body.velocity.x, jumpheight);
             jumpsLeft--;
         }
+    }
+
+    public void JumpBoostenable()
+    {
+        JumpBoost.JumpBoostActive += addJumpsLeft;
+    }
+
+    public void addJumpsLeft()
+    {
+        jumpsLeft += 1;
     }
 
     public void ResetJumpsLeft() 

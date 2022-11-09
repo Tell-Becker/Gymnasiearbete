@@ -19,6 +19,7 @@ public class ChangeColor : MonoBehaviour
         chosenColors.Add(Color.green);
         // chosenColors.Add(Color.pink);
         chosenColors.Add(Color.yellow);
+
         // chosenColors.Add(Color.HSVToRGB(255,165,0));
         // chosenColors.Add(Color.HSVToRGB(255,192,203));
         // Debug.Log("Hej");       

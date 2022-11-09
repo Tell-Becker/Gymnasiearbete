@@ -7,10 +7,14 @@ using UnityEngine.SceneManagement;
 public class PlayerDead : MonoBehaviour
 {
 
-    public static event Action OnPlayerDeath;
+    // public static event Action OnPlayerDeath;
     
-    void Update()
-    {
-        
-    }
+    // void Update()
+    // {
+    //     if (OnPlayerDeath == true)
+    //     [
+            
+    //     ]
+    // }
 }
+
