@@ -8,14 +8,15 @@ public class JumpBoost : MonoBehaviour
 {
 
 
-    public static event Action JumpBoostActive;
+    // public static event Action JumpBoostActive;
+    [SerializeField] private PlayerMovement movement;
 
     private void OnTriggerEnter2D(Collider2D Collider2D)
     {
         if (Collider2D.CompareTag("JumpBoost"))
         {
             Destroy(Collider2D.gameObject);
-            JumpBoostActive?.Invoke();
+            movement.JumpBoostenable();
         }
         // {
         //     // Debug.Log("Hej");

@@ -4,6 +4,7 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 { 
 
+    ParticleSystem jumpParticle;
     [SerializeField] private float speed;
     [SerializeField] private float jumpheight;
     [SerializeField] private float raycastDownDistance;
@@ -41,6 +42,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void start()
     {
+        jumpParticle = GetComponent<ParticleSystem>();
         EnablePlayerMovement();
     }
 
@@ -129,7 +131,9 @@ public class PlayerMovement : MonoBehaviour
 
     public void JumpBoostenable()
     {
-        JumpBoost.JumpBoostActive += addJumpsLeft;
+        jumpsLeft += 1;
+        jumpParticle.Play();
+        // JumpBoost.JumpBoostActive += addJumpsLeft;
     }
 
     public void addJumpsLeft()
@@ -137,7 +141,7 @@ public class PlayerMovement : MonoBehaviour
         jumpsLeft += 1;
     }
 
-    public void ResetJumpsLeft() 
+    public void ResetJumpsLeft()  
     {
         hasGrappled = false;
         jumpsLeft = 1;
