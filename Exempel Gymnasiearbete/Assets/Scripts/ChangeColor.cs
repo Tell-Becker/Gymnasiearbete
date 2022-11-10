@@ -19,11 +19,14 @@ public class ChangeColor : MonoBehaviour
         chosenColors.Add(Color.green);
         // chosenColors.Add(Color.pink);
         chosenColors.Add(Color.yellow);
+        chosenColors.Add(Color.magenta);
+        chosenColors.Add(new Color32(255,165,0,255));
+        chosenColors.Add(new Color32(255,72,196,255));
 
         // chosenColors.Add(Color.HSVToRGB(255,165,0));
         // chosenColors.Add(Color.HSVToRGB(255,192,203));
         // Debug.Log("Hej");       
-        randomColor = chosenColors[Random.Range(0,5)];
+        randomColor = chosenColors[Random.Range(0,8)];
 
         rend[0].color = randomColor;
 

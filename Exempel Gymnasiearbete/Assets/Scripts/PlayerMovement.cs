@@ -13,8 +13,8 @@ public class PlayerMovement : MonoBehaviour
     private int jumpsLeft;
     private Rigidbody2D body;
     public grappler grapplerScript;
-    public GroundCheck groundChecker;
-    public JumpBoost JumpBoost;
+    // public GroundCheck groundChecker;
+    // public JumpBoost JumpBoost;
     
     private bool hasGrappled = false;
     private float grappleReleaseSpeed;
@@ -80,8 +80,8 @@ public class PlayerMovement : MonoBehaviour
             {
                 if (grappleReleaseSpeed > 0.02f)
                 {
-                    grappleReleaseSpeed -= grapplingSpeedRetardation;
-                    grappleReleaseSpeed += 0.09f;
+                    grappleReleaseSpeed -= grapplingSpeedRetardation * (1 + Time.deltaTime);
+                    grappleReleaseSpeed += 0.05f; 
                 }
 
                 if (Input.GetKey(KeyCode.A)) 
@@ -100,8 +100,8 @@ public class PlayerMovement : MonoBehaviour
             {
                 if (grappleReleaseSpeed < -0.02f)
                 {
-                    grappleReleaseSpeed += grapplingSpeedRetardation;
-                    grappleReleaseSpeed -= 0.09f;
+                    grappleReleaseSpeed += grapplingSpeedRetardation * (1 + Time.deltaTime);
+                    grappleReleaseSpeed -= 0.05f;
                 }
                 if (Input.GetKey(KeyCode.A))
                 {
@@ -132,7 +132,7 @@ public class PlayerMovement : MonoBehaviour
     public void JumpBoostenable()
     {
         jumpsLeft += 1;
-        jumpParticle.Play();
+        // jumpParticle.Play();
         // JumpBoost.JumpBoostActive += addJumpsLeft;
     }
 
