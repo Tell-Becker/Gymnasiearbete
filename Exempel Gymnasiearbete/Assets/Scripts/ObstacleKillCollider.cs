@@ -16,7 +16,7 @@ public class ObstacleKillCollider : MonoBehaviour
         {
 
 
-            Debug.Log("You're dead");
+            // Debug.Log("You're dead");
             OnPlayerDeath?.Invoke();
             //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
             //SceneManager.LoadScene(Respawn);

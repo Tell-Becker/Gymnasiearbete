@@ -13,15 +13,12 @@ public class PlayerMovement : MonoBehaviour
     private int jumpsLeft;
     private Rigidbody2D body;
     public grappler grapplerScript;
-    // public GroundCheck groundChecker;
-    // public JumpBoost JumpBoost;
-    
+    [SerializeField] JumpBoost jumpBoostScript;
     private bool hasGrappled = false;
     private float grappleReleaseSpeed;
     [SerializeField] float maximumGrapplingSpeed;
     [SerializeField] float grapplingSpeedRetardation = 0.1f;
 
-    Animator animator;
 
     private void OnEnable()
     {
@@ -37,25 +34,33 @@ public class PlayerMovement : MonoBehaviour
     private void Awake()
     {
         body = GetComponent<Rigidbody2D>();
-        animator = GetComponent<Animator>(); 
-    }
-
-    private void start()
-    {
+        // animator = GetComponent<Animator>(); 
         jumpParticle = GetComponent<ParticleSystem>();
         EnablePlayerMovement();
     }
 
+    // private void start()
+    // {
+    //     jumpParticle = GetComponent<ParticleSystem>();
+    //     EnablePlayerMovement();
+    // }
+
     private void Update()
    {
+
+    
+
+    if (jumpBoostScript.GetJumpBoosParticleEnabled())
+    {
+        jumpParticle.Play();
+    }
 
     speed = 8;
         if (grapplerScript.isGrapplerActive == true && !hasGrappled)
         {            
             hasGrappled = true;
         }
-
-        if (hasGrappled == false) // fungerar men du har inget momentum
+        if (hasGrappled == false &&  body.bodyType != RigidbodyType2D.Static) // fungerar men du har inget momentum
         {
             body.velocity = new Vector2(Input.GetAxis("Horizontal") * speed, body.velocity.y);
         }
@@ -80,7 +85,7 @@ public class PlayerMovement : MonoBehaviour
             {
                 if (grappleReleaseSpeed > 0.02f)
                 {
-                    grappleReleaseSpeed -= grapplingSpeedRetardation * (1 + Time.deltaTime);
+                    grappleReleaseSpeed -= grapplingSpeedRetardation * 1;
                     grappleReleaseSpeed += 0.05f; 
                 }
 
@@ -92,7 +97,10 @@ public class PlayerMovement : MonoBehaviour
                 {
                     speed = 8 - grappleReleaseSpeed;
                 }
-                body.velocity = new Vector2(Input.GetAxis("Horizontal") * speed + grappleReleaseSpeed, body.velocity.y);
+                if (body.bodyType != RigidbodyType2D.Static)
+                {
+                    body.velocity = new Vector2(Input.GetAxis("Horizontal") * speed + grappleReleaseSpeed, body.velocity.y);
+                }
 
             }
 
@@ -100,7 +108,7 @@ public class PlayerMovement : MonoBehaviour
             {
                 if (grappleReleaseSpeed < -0.02f)
                 {
-                    grappleReleaseSpeed += grapplingSpeedRetardation * (1 + Time.deltaTime);
+                    grappleReleaseSpeed += grapplingSpeedRetardation * 1;
                     grappleReleaseSpeed -= 0.05f;
                 }
                 if (Input.GetKey(KeyCode.A))
@@ -112,8 +120,10 @@ public class PlayerMovement : MonoBehaviour
                 {
                     speed = 8;
                 }
+                if (body.bodyType != RigidbodyType2D.Static)
+                {
                 body.velocity = new Vector2(Input.GetAxis("Horizontal") * speed + grappleReleaseSpeed, body.velocity.y);
-
+                }
             }
 
             else if (grappleReleaseSpeed == 0)
@@ -126,13 +136,16 @@ public class PlayerMovement : MonoBehaviour
         {
             body.velocity = new Vector2(body.velocity.x, jumpheight);
             jumpsLeft--;
+            if (jumpsLeft <= 0)
+            {
+                jumpBoostScript.funktion();
+            }
         }
     }
 
     public void JumpBoostenable()
     {
         jumpsLeft += 1;
-        // jumpParticle.Play();
         // JumpBoost.JumpBoostActive += addJumpsLeft;
     }
 
@@ -145,26 +158,27 @@ public class PlayerMovement : MonoBehaviour
     {
         hasGrappled = false;
         jumpsLeft = 1;
-        Debug.Log(jumpsLeft);
+        jumpBoostScript.funktion();
+        // Debug.Log(jumpsLeft);
     } 
 
     public void NotOnGround()
     {
         jumpsLeft = 0;
-        Debug.Log(jumpsLeft);
+        // Debug.Log(jumpsLeft);
     }
 
     public void ReleasedGrapple() => grappleReleaseSpeed = body.velocity.x;
 
     private void DisablePlayerMovement()
     {
-        animator.enabled = false;
+        // animator.enabled = false;
         body.bodyType = RigidbodyType2D.Static;
     }
 
         private void EnablePlayerMovement()
     {
-        animator.enabled = true;
+        // animator.enabled = true;
         body.bodyType = RigidbodyType2D.Dynamic;
     }
 

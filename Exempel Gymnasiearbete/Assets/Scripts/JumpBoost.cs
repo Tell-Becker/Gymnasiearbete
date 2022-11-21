@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class JumpBoost : MonoBehaviour
 {
-
+    private bool JumpBoostParticleEnabled;
 
     // public static event Action JumpBoostActive;
     [SerializeField] private PlayerMovement movement;
@@ -17,6 +17,7 @@ public class JumpBoost : MonoBehaviour
         {
             Destroy(Collider2D.gameObject);
             movement.JumpBoostenable();
+            JumpBoostParticleEnabled = true;
         }
         // {
         //     // Debug.Log("Hej");
@@ -24,4 +25,8 @@ public class JumpBoost : MonoBehaviour
 
         // }
     }
+
+    public bool GetJumpBoosParticleEnabled() {return JumpBoostParticleEnabled;}
+
+    public void funktion() => JumpBoostParticleEnabled = false;
 }

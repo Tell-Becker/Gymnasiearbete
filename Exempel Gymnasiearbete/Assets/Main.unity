@@ -658,7 +658,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 484760021}
-  - component: {fileID: 484760022}
   m_Layer: 0
   m_Name: EndPosition
   m_TagString: Untagged
@@ -681,26 +680,6 @@ Transform:
   m_Father: {fileID: 1367950240}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!95 &484760022
-Animator:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 484760020}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: ba7ba6082b3c18a43b968c5886ded391, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &495891164
 GameObject:
   m_ObjectHideFlags: 0
@@ -4026,7 +4005,6 @@ GameObject:
   - component: {fileID: 1312031168}
   - component: {fileID: 1312031170}
   - component: {fileID: 1312031171}
-  - component: {fileID: 1312031172}
   - component: {fileID: 1312031173}
   - component: {fileID: 1312031174}
   - component: {fileID: 1312031176}
@@ -4147,6 +4125,7 @@ MonoBehaviour:
     m_Bits: 64
   bottomPoint: {fileID: 593702773}
   grapplerScript: {fileID: 1312031170}
+  jumpBoostScript: {fileID: 1312031174}
   maximumGrapplingSpeed: 10
   grapplingSpeedRetardation: 0.1
 --- !u!120 &1312031168
@@ -4304,26 +4283,6 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 1.1
---- !u!95 &1312031172
-Animator:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1312031161}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &1312031173
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4368,13 +4327,13 @@ ParticleSystem:
   emitterVelocityMode: 0
   looping: 0
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   startDelay:
     serializedVersion: 2
     minMaxState: 0
-    scalar: 1
+    scalar: 0
     minScalar: 1
     maxCurve:
       serializedVersion: 2
@@ -10642,7 +10601,6 @@ GameObject:
   - component: {fileID: 1909529184}
   - component: {fileID: 1909529185}
   - component: {fileID: 1909529186}
-  - component: {fileID: 1909529187}
   m_Layer: 0
   m_Name: GymnasieGameBakground2x - 2
   m_TagString: Untagged
@@ -10734,26 +10692,6 @@ MonoBehaviour:
   cam: {fileID: 519420028}
   parallaxEffect: 0.7
   offset: 0.1
---- !u!95 &1909529187
-Animator:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1909529183}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 3f46c99737c74644fb8fc0b89b5e5f98, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1969905696
 GameObject:
   m_ObjectHideFlags: 0
