@@ -47,7 +47,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
    {
-
+    Debug.Log(jumpBoostScript.GetJumpBoosParticleEnabled());
     
 
     if (jumpBoostScript.GetJumpBoosParticleEnabled())
@@ -56,12 +56,14 @@ public class PlayerMovement : MonoBehaviour
     }
 
     speed = 8;
+
         if (grapplerScript.isGrapplerActive == true && !hasGrappled)
-        {            
+        {   
             hasGrappled = true;
         }
         if (hasGrappled == false &&  body.bodyType != RigidbodyType2D.Static) // fungerar men du har inget momentum
         {
+
             body.velocity = new Vector2(Input.GetAxis("Horizontal") * speed, body.velocity.y);
         }
 
