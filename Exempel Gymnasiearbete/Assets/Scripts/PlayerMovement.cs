@@ -47,11 +47,12 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
    {
-    Debug.Log(jumpBoostScript.GetJumpBoosParticleEnabled());
+    // Debug.Log(jumpBoostScript.GetJumpBoosParticleEnabled());
     
 
     if (jumpBoostScript.GetJumpBoosParticleEnabled())
     {
+        Debug.Log(jumpParticle.isPlaying);
         if(jumpParticle.isPlaying)
         {
             jumpParticle.Stop();
@@ -142,10 +143,11 @@ public class PlayerMovement : MonoBehaviour
         {
             body.velocity = new Vector2(body.velocity.x, jumpheight);
             jumpsLeft--;
-            if (jumpsLeft <= 0)
-            {
-                jumpBoostScript.funktion();
-            }
+            
+        }
+        if (jumpsLeft <= 0)
+        {
+            jumpBoostScript.funktion();
         }
     }
 
@@ -171,6 +173,7 @@ public class PlayerMovement : MonoBehaviour
     public void NotOnGround()
     {
         jumpsLeft = 0;
+        
         // Debug.Log(jumpsLeft);
     }
 
