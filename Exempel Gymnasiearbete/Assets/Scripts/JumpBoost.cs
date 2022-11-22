@@ -25,7 +25,7 @@ public class JumpBoost : MonoBehaviour
 
         // }
     }
-
+    
     public bool GetJumpBoosParticleEnabled() {return JumpBoostParticleEnabled;}
 
     public void funktion() => JumpBoostParticleEnabled = false;

@@ -52,6 +52,10 @@ public class PlayerMovement : MonoBehaviour
 
     if (jumpBoostScript.GetJumpBoosParticleEnabled())
     {
+        if(jumpParticle.isPlaying)
+        {
+            jumpParticle.Stop();
+        }
         jumpParticle.Play();
     }
 
