@@ -436,7 +436,17 @@ Tilemap:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 400615782}
   m_Enabled: 1
-  m_Tiles: {}
+  m_Tiles:
+  - first: {x: 0, y: -10, z: 0}
+    second:
+      serializedVersion: 2
+      m_TileIndex: 5
+      m_TileSpriteIndex: 5
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 0
+      m_TileObjectToInstantiateIndex: 65535
+      dummyAlignment: 0
+      m_AllTileFlags: 1073741825
   m_AnimatedTiles: {}
   m_TileAssetArray:
   - m_RefCount: 0
@@ -449,8 +459,8 @@ Tilemap:
     m_Data: {fileID: 0}
   - m_RefCount: 0
     m_Data: {fileID: 0}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
+  - m_RefCount: 1
+    m_Data: {fileID: 11400000, guid: 029ed402bcdab68418bf918ee056691d, type: 2}
   m_TileSpriteArray:
   - m_RefCount: 0
     m_Data: {fileID: 0}
@@ -462,35 +472,35 @@ Tilemap:
     m_Data: {fileID: 0}
   - m_RefCount: 0
     m_Data: {fileID: 0}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
+  - m_RefCount: 1
+    m_Data: {fileID: -223938732, guid: de44770bcfb2a8849a0cc4b50deb251f, type: 3}
   m_TileMatrixArray:
-  - m_RefCount: 0
+  - m_RefCount: 1
     m_Data:
-      e00: 1e-45
+      e00: 1
       e01: 0
-      e02: -1.8295932e-19
-      e03: -1.8295932e-19
+      e02: 0
+      e03: 0
       e10: 0
-      e11: 0
-      e12: 5.59e-43
-      e13: 5.59e-43
-      e20: 1.7671316e-12
-      e21: 1e-45
-      e22: 5.314262e-29
-      e23: 8.784757e+9
-      e30: 4.5905e-41
+      e11: 1
+      e12: 0
+      e13: 0
+      e20: 0
+      e21: 0
+      e22: 1
+      e23: 0
+      e30: 0
       e31: 0
-      e32: 5.6e-43
-      e33: 5.63e-43
+      e32: 0
+      e33: 1
   m_TileColorArray:
-  - m_RefCount: 0
-    m_Data: {r: 3.5145e-41, g: 3.5145e-41, b: 3.5145e-41, a: 3.5145e-41}
+  - m_RefCount: 1
+    m_Data: {r: 1, g: 1, b: 1, a: 1}
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Origin: {x: -11, y: -4, z: 0}
-  m_Size: {x: 118, y: 10, z: 1}
+  m_Origin: {x: -11, y: -10, z: 0}
+  m_Size: {x: 118, y: 16, z: 1}
   m_TileAnchor: {x: 0.5, y: 0.5, z: 0}
   m_TileOrientation: 0
   m_TileOrientationMatrix:
@@ -705,6 +715,10 @@ MonoBehaviour:
   - {fileID: 2590658538028235210, guid: e9dad96372ff0fa4184404aa7024d640, type: 3}
   - {fileID: 39173894353965730, guid: 1c9e3468d2053054c801b0675d54dca9, type: 3}
   - {fileID: 5644474883977297125, guid: 42d8abdd25371b2498de85ccc0dc0540, type: 3}
+  - {fileID: 5027187182533881830, guid: 64cc50c1c9bf59b4b8f2a566dbd893e7, type: 3}
+  - {fileID: 6863121537988959135, guid: 69bd6bc9d7596dd49a1d43b60405f5d7, type: 3}
+  - {fileID: 7712754517997235397, guid: 65c66f2fb9c92014bb2f12fc46db75ab, type: 3}
+  - {fileID: 7201643714731050317, guid: 695c12cb147461742942048b7068bfa0, type: 3}
   player: {fileID: 1312031161}
 --- !u!1 &484760020
 GameObject:
@@ -1390,7 +1404,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.6, y: 0.7}
+  m_Size: {x: 1.7, y: 0.7}
   m_EdgeRadius: 0
 --- !u!114 &593702775
 MonoBehaviour:
@@ -4066,6 +4080,7 @@ GameObject:
   - component: {fileID: 1312031174}
   - component: {fileID: 1312031176}
   - component: {fileID: 1312031175}
+  - component: {fileID: 1312031177}
   m_Layer: 7
   m_Name: Player
   m_TagString: Player
@@ -9161,6 +9176,20 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!114 &1312031177
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1312031161}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a54b61a2749f81499d5295a4bdc9810, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fallMultiplier: 1.2
+  lowJumpMultiplier: 2
 --- !u!1 &1341538803
 GameObject:
   m_ObjectHideFlags: 0
@@ -10508,7 +10537,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1863478497}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0

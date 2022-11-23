@@ -19,7 +19,6 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float maximumGrapplingSpeed;
     [SerializeField] float grapplingSpeedRetardation = 0.1f;
 
-
     private void OnEnable()
     {
         ObstacleKillCollider.OnPlayerDeath += DisablePlayerMovement;
@@ -93,7 +92,7 @@ public class PlayerMovement : MonoBehaviour
                 if (grappleReleaseSpeed > 0.02f)
                 {
                     grappleReleaseSpeed -= grapplingSpeedRetardation * 1;
-                    grappleReleaseSpeed += 0.05f; 
+                    grappleReleaseSpeed += 0.06f; 
                 }
 
                 if (Input.GetKey(KeyCode.A)) 
@@ -116,7 +115,7 @@ public class PlayerMovement : MonoBehaviour
                 if (grappleReleaseSpeed < -0.02f)
                 {
                     grappleReleaseSpeed += grapplingSpeedRetardation * 1;
-                    grappleReleaseSpeed -= 0.05f;
+                    grappleReleaseSpeed -= 0.06f;
                 }
                 if (Input.GetKey(KeyCode.A))
                 {
@@ -139,12 +138,16 @@ public class PlayerMovement : MonoBehaviour
             }        
         }
 
+
+
         if (jumpsLeft > 0 && Input.GetKeyDown(KeyCode.Space)) // kollar om det finns hopp kvar
         {
             body.velocity = new Vector2(body.velocity.x, jumpheight);
             jumpsLeft--;
             
         }
+
+
         if (jumpsLeft <= 0)
         {
             jumpBoostScript.funktion();
