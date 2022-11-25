@@ -26,6 +26,7 @@ public class GroundCheck : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D otherCollider)
     {
+        OnGround = true;
         newLayer = otherCollider.gameObject.layer;
         newOtherCollider = otherCollider;
         //Debug.Log(otherCollider.gameObject.layer);
@@ -50,6 +51,7 @@ public class GroundCheck : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D otherCollider)
     {
+        OnGround = false;
         if ((otherCollider.gameObject.layer == 6 && newLayer != 6) || newOtherCollider == otherCollider)
         {
             movement.NotOnGround();

@@ -14,6 +14,7 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody2D body;
     public grappler grapplerScript;
     [SerializeField] JumpBoost jumpBoostScript;
+    [SerializeField] GroundCheck groundCheckScript;
     private bool hasGrappled = false;
     private float grappleReleaseSpeed;
     [SerializeField] float maximumGrapplingSpeed;
@@ -46,17 +47,23 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
    {
+    // Debug.Log(jumpParticle.isPlaying);
     // Debug.Log(jumpBoostScript.GetJumpBoosParticleEnabled());
     
 
-    if (jumpBoostScript.GetJumpBoosParticleEnabled())
+    if (jumpBoostScript.GetJumpBoosParticleEnabled() || jumpsLeft > 1)
     {
-        Debug.Log(jumpParticle.isPlaying);
-        if(jumpParticle.isPlaying)
-        {
-            jumpParticle.Stop();
-        }
+        // Debug.Log(jumpParticle.particleCount);
         jumpParticle.Play();
+        
+        Debug.Log("Enable");
+    }
+
+    if (jumpsLeft == 0 || groundCheckScript.OnGround == true)
+    {
+        jumpBoostScript.DisableParticleEffect();
+        // jumpParticle.Stop();
+        Debug.Log("Disable");
     }
 
     speed = 8;
@@ -144,14 +151,12 @@ public class PlayerMovement : MonoBehaviour
         {
             body.velocity = new Vector2(body.velocity.x, jumpheight);
             jumpsLeft--;
+        
+        }
             
-        }
 
 
-        if (jumpsLeft <= 0)
-        {
-            jumpBoostScript.funktion();
-        }
+        
     }
 
     public void JumpBoostenable()
@@ -167,9 +172,14 @@ public class PlayerMovement : MonoBehaviour
 
     public void ResetJumpsLeft()  
     {
+        // if (jumpParticle.isPlaying)
+        // {
+        //     jumpParticle.Stop();
+        // }
         hasGrappled = false;
         jumpsLeft = 1;
-        jumpBoostScript.funktion();
+        // jumpBoostScript.DisableParticleEffect();
+        
         // Debug.Log(jumpsLeft);
     } 
 
