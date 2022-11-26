@@ -40,6 +40,9 @@ public class ChangeColor : MonoBehaviour
             rend[6].color = randomColor;
             rend[7].color = randomColor;
             rend[8].color = randomColor;
+            rend[9].color = randomColor;
+            rend[10].color = randomColor;
+            rend[11].color = randomColor;
         }
       
     }

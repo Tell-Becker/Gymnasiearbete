@@ -10,7 +10,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float raycastDownDistance;
     [SerializeField] private LayerMask whatIsGround;
     [SerializeField] private Transform bottomPoint;
-    private int jumpsLeft;
+    public int jumpsLeft;
     private Rigidbody2D body;
     public grappler grapplerScript;
     [SerializeField] JumpBoost jumpBoostScript;
@@ -51,20 +51,21 @@ public class PlayerMovement : MonoBehaviour
     // Debug.Log(jumpBoostScript.GetJumpBoosParticleEnabled());
     
 
-    if (jumpBoostScript.GetJumpBoosParticleEnabled() || jumpsLeft > 1)
-    {
-        // Debug.Log(jumpParticle.particleCount);
-        jumpParticle.Play();
+    // if (jumpBoostScript.GetJumpBoosParticleEnabled() || jumpsLeft > 1)
+    
+    // {
+    //     // Debug.Log(jumpParticle.particleCount);
+    //     jumpParticle.Play();
         
-        Debug.Log("Enable");
-    }
+    //     Debug.Log("Enable");
+    // }
 
-    if (jumpsLeft == 0 || groundCheckScript.OnGround == true)
-    {
-        jumpBoostScript.DisableParticleEffect();
-        // jumpParticle.Stop();
-        Debug.Log("Disable");
-    }
+    // if (jumpsLeft == 0 || groundCheckScript.OnGround == true)
+    // {
+    //     jumpBoostScript.DisableParticleEffect();
+    //     // jumpParticle.Stop();
+    //     Debug.Log("Disable");
+    // }
 
     speed = 8;
 
