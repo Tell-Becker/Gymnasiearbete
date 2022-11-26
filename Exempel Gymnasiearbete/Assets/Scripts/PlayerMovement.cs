@@ -4,7 +4,6 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 { 
 
-    ParticleSystem jumpParticle;
     [SerializeField] private float speed;
     [SerializeField] private float jumpheight;
     [SerializeField] private float raycastDownDistance;
@@ -19,6 +18,9 @@ public class PlayerMovement : MonoBehaviour
     private float grappleReleaseSpeed;
     [SerializeField] float maximumGrapplingSpeed;
     [SerializeField] float grapplingSpeedRetardation = 0.1f;
+    [SerializeField] ParticleSystem jumpParticle;
+    private bool particleEnabled = false;
+
 
     private void OnEnable()
     {
@@ -35,7 +37,6 @@ public class PlayerMovement : MonoBehaviour
     {
         body = GetComponent<Rigidbody2D>();
         // animator = GetComponent<Animator>(); 
-        jumpParticle = GetComponent<ParticleSystem>();
         EnablePlayerMovement();
     }
 
@@ -49,16 +50,28 @@ public class PlayerMovement : MonoBehaviour
    {
     // Debug.Log(jumpParticle.isPlaying);
     // Debug.Log(jumpBoostScript.GetJumpBoosParticleEnabled());
-    
 
-    // if (jumpBoostScript.GetJumpBoosParticleEnabled() || jumpsLeft > 1)
-    
-    // {
-    //     // Debug.Log(jumpParticle.particleCount);
-    //     jumpParticle.Play();
+
+    if (jumpBoostScript.GetJumpBoosParticleEnabled())
+    {
+        particleEnabled = true;
+        // if (!jumpParticle.gameObject.active)
+        // {
+        //     jumpParticle.gameObject.SetActive(true);
+        // }
         
-    //     Debug.Log("Enable");
-    // }
+    }
+    else
+    {
+        particleEnabled = false;
+        // if (jumpParticle.gameObject.active)
+        // {
+        //     jumpParticle.gameObject.SetActive(false);
+        // }
+    } 
+
+    var emission = jumpParticle.emission;
+    emission.enabled = particleEnabled;
 
     // if (jumpsLeft == 0 || groundCheckScript.OnGround == true)
     // {
@@ -152,7 +165,10 @@ public class PlayerMovement : MonoBehaviour
         {
             body.velocity = new Vector2(body.velocity.x, jumpheight);
             jumpsLeft--;
-        
+            if (jumpsLeft <= 0)
+            {
+                jumpBoostScript.DisableParticleEffect();
+            }
         }
             
 
@@ -179,7 +195,7 @@ public class PlayerMovement : MonoBehaviour
         // }
         hasGrappled = false;
         jumpsLeft = 1;
-        // jumpBoostScript.DisableParticleEffect();
+        jumpBoostScript.DisableParticleEffect();
         
         // Debug.Log(jumpsLeft);
     } 
