@@ -10,7 +10,7 @@ public class RandomObstacle : MonoBehaviour
     [SerializeField] private Transform Obstacle_Start;
     [SerializeField] public List<Transform> ObstacleList;
     [SerializeField] private GameObject player;
-    // [SerializeField] public List<Transform> ObstacleChangeColorList;
+    [SerializeField] public List<Transform> ObstacleChangeColorList;
     [SerializeField] private List<Color32> chosenObstacleColor = new List<Color32>();
     [SerializeField] private Color32 randomObstacleColor;
     bool Once = false;
@@ -27,6 +27,7 @@ public class RandomObstacle : MonoBehaviour
             SpawnLevelPart();
         }
         // Debug.Log(this.randomObstacleColor);
+         ObstacleChangeColorList[0].GetChild(0).GetComponent<Tilemap>().color = randomObstacleColor;
     }
 
     private void Update() 

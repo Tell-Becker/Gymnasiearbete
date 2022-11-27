@@ -818,6 +818,8 @@ MonoBehaviour:
   - {fileID: 7712754517997235397, guid: 65c66f2fb9c92014bb2f12fc46db75ab, type: 3}
   - {fileID: 7201643714731050317, guid: 695c12cb147461742942048b7068bfa0, type: 3}
   player: {fileID: 1312031161}
+  ObstacleChangeColorList:
+  - {fileID: 1367950240}
   chosenObstacleColor:
   - serializedVersion: 2
     rgba: 4278190335
@@ -4641,7 +4643,7 @@ Transform:
   m_PrefabInstance: {fileID: 4114503449034114255}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1778069231}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
