@@ -1,34 +1,38 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Tilemaps;
+
 
 public class ChangeColor : MonoBehaviour
 {
     public List<SpriteRenderer> rend;
     private List<Color> chosenColors;
-    private Color randomColor;
+    public Color32 randomColor;
+    [SerializeField] RandomObstacle RandomObstacleScript;
 
     private void Start()
     {
-        // rend = GetComponent<SpriteRenderer>();
+        // // rend = GetComponent<SpriteRenderer>();
 
-        chosenColors = new List<Color>();
-        chosenColors.Add(Color.white);
-        chosenColors.Add(Color.red);
-        chosenColors.Add(Color.cyan);
-        chosenColors.Add(Color.green);
-        // chosenColors.Add(Color.pink);
-        chosenColors.Add(Color.yellow);
-        chosenColors.Add(Color.magenta);
-        chosenColors.Add(new Color32(255,165,0,255));
-        chosenColors.Add(new Color32(255,72,196,255));
+        // chosenColors = new List<Color>();
+        // chosenColors.Add(Color.white);
+        // chosenColors.Add(Color.red);
+        // chosenColors.Add(Color.cyan);
+        // chosenColors.Add(Color.green);
+        // // chosenColors.Add(Color.pink);
+        // chosenColors.Add(Color.yellow);
+        // chosenColors.Add(Color.magenta);
+        // chosenColors.Add(new Color32(255,165,0,255));
+        // chosenColors.Add(new Color32(255,72,196,255));
 
-        // chosenColors.Add(Color.HSVToRGB(255,165,0));
-        // chosenColors.Add(Color.HSVToRGB(255,192,203));
-        // Debug.Log("Hej");       
-        randomColor = chosenColors[Random.Range(0,8)];
+        // // chosenColors.Add(Color.HSVToRGB(255,165,0));
+        // // chosenColors.Add(Color.HSVToRGB(255,192,203));
+        // // Debug.Log("Hej");       
+        // randomColor = chosenColors[Random.Range(0,8)];
 
-        rend[0].color = randomColor;
+        randomColor = RandomObstacleScript.randomObstacleColor;
+
 
         if (rend.Count > 1)
         {

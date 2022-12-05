@@ -11,15 +11,15 @@ public class RandomObstacle : MonoBehaviour
     [SerializeField] public List<Transform> ObstacleList;
     [SerializeField] private GameObject player;
     [SerializeField] public List<Transform> ObstacleChangeColorList;
-    [SerializeField] private List<Color32> chosenObstacleColor = new List<Color32>();
-    [SerializeField] private Color32 randomObstacleColor;
+    [SerializeField] public List<Color32> chosenObstacleColor = new List<Color32>();
+    [SerializeField] public Color32 randomObstacleColor;
     bool Once = false;
 
     private Vector3 lastEndPosition;
 
     private void Start()
     {
-        this.randomObstacleColor = chosenObstacleColor[Random.Range(0,chosenObstacleColor.Count)];
+        randomObstacleColor = chosenObstacleColor[Random.Range(0,chosenObstacleColor.Count)];
         lastEndPosition = Obstacle_Start.Find("EndPosition").position;
         int startingSpawnLevelParts = 5;
         for (int i = 0; i < startingSpawnLevelParts; i++)
