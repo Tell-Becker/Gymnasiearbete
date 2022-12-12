@@ -30,23 +30,25 @@ public class ChangeColor : MonoBehaviour
         // // chosenColors.Add(Color.HSVToRGB(255,192,203));
         // // Debug.Log("Hej");       
         // randomColor = chosenColors[Random.Range(0,8)];
+        rend[0].color = RandomObstacleScript.randomObstacleColor;
 
-        randomColor = RandomObstacleScript.randomObstacleColor;
+        // // randomColor = RandomObstacleScript.randomObstacleColor;
+
 
 
         if (rend.Count > 1)
         {
-            rend[1].color = randomColor;
-            rend[2].color = randomColor;
-            rend[3].color = randomColor;
-            rend[4].color = randomColor;
-            rend[5].color = randomColor;
-            rend[6].color = randomColor;
-            rend[7].color = randomColor;
-            rend[8].color = randomColor;
-            rend[9].color = randomColor;
-            rend[10].color = randomColor;
-            rend[11].color = randomColor;
+            rend[1].color = RandomObstacleScript.randomObstacleColor;
+            rend[2].color = RandomObstacleScript.randomObstacleColor;
+            rend[3].color = RandomObstacleScript.randomObstacleColor;
+            rend[4].color = RandomObstacleScript.randomObstacleColor;
+            rend[5].color = RandomObstacleScript.randomObstacleColor;
+            rend[6].color = RandomObstacleScript.randomObstacleColor;
+            rend[7].color = RandomObstacleScript.randomObstacleColor;
+            rend[8].color = RandomObstacleScript.randomObstacleColor;
+            rend[9].color = RandomObstacleScript.randomObstacleColor;
+            rend[10].color = RandomObstacleScript.randomObstacleColor;
+            rend[11].color = RandomObstacleScript.randomObstacleColor;
         }
       
     }

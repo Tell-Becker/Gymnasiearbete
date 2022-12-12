@@ -1016,6 +1016,9 @@ MonoBehaviour:
   - {fileID: 8333867758531493500, guid: 661e011324dd60c43a90bdb15519a677, type: 3}
   - {fileID: 2733118354289658840, guid: d75f093e0a2762e4d9e0bc1ba41a5f61, type: 3}
   - {fileID: 6113107973305789786, guid: c1f0ee710b8fe8d43b2121c84130d9f6, type: 3}
+  - {fileID: 3144096472630298081, guid: 7f1dd5b39e59c764f817f9df7e9875bc, type: 3}
+  - {fileID: 1600507180908039563, guid: 9e792f246dcbfc544a814b28861cbd50, type: 3}
+  - {fileID: 7917635380971969776, guid: 31d0b9b6531f75547a4af35d3f42c851, type: 3}
   player: {fileID: 1312031161}
   ObstacleChangeColorList:
   - {fileID: 1367950240}
@@ -1031,7 +1034,7 @@ MonoBehaviour:
   - serializedVersion: 2
     rgba: 4278255615
   - serializedVersion: 2
-    rgba: 4294902015
+    rgba: 4293329098
   - serializedVersion: 2
     rgba: 4278232575
   - serializedVersion: 2
@@ -4921,8 +4924,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1390161301}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -40, y: -2.0873, z: 0.9142384}
-  m_LocalScale: {x: 36.639507, y: 58.019836, z: 1}
+  m_LocalPosition: {x: -65, y: -2.0873, z: 0.9142384}
+  m_LocalScale: {x: 81.4131, y: 58.019836, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 539997436}
@@ -5030,7 +5033,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13ec4767df9c5fd45930522779b671fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stormStartSpeed: 2.5
+  stormStartSpeed: 4
 --- !u!50 &1390161307
 Rigidbody2D:
   serializedVersion: 4
@@ -11947,7 +11950,7 @@ MonoBehaviour:
   randomColor:
     serializedVersion: 2
     rgba: 0
-  RandomObstacleScript: {fileID: 0}
+  RandomObstacleScript: {fileID: 469194812}
 --- !u!1 &2064438535
 GameObject:
   m_ObjectHideFlags: 0
